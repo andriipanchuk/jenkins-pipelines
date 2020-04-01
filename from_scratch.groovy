@@ -14,9 +14,14 @@ git 'https://github.com/farrukh90/cool_website.git'
 
 } 
 
-stage("Stage2"){ 
+stage("Install Prerequisites"){ 
 
-echo "hello" 
+sh """
+ sudo yum install httpd -y
+ sudo yum cd -r * /var/www/html
+ sudo systemctl start httpd
+
+   """
 
 } 
 
