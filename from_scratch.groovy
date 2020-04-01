@@ -14,18 +14,27 @@ git 'https://github.com/farrukh90/cool_website.git'
 
 } 
 
-stage("Install Prerequisites"){ 
+stage("Install Prerequisites"){
+		sh """
+		ssh centos@jenkins_worker1.cyber-pro.org                 sudo yum install httpd -y
 
-sh """
- sudo yum install httpd -y
- sudo yum cd -r * /var/www/html
- sudo systemctl start httpd
-
-   """
+        """
+}
+        stage("Copy domain"){
+            """
+		scp -r *  centos@jenkins_worker1.cyber-pro.org:/tmp
+		ssh centos@jenkins_worker1.cyber-pro.org                 sudo cp -r /tmp/index.html /var/www/html/
+		ssh centos@jenkins_worker1.cyber-pro.org                 sudo cp -r /tmp/style.css /var/www/html/
+		ssh centos@jenkins_worker1.cyber-pro.org				   sudo chown centos:centos /var/www/html/
+		ssh centos@jenkins_worker1.cyber-pro.org				   sudo chmod 777 /var/www/html/*
+		ssh centos@jenkins_worker1.cyber-pro.org                sudo systemctl restart httpd 
+		"""
+}
 
 } 
 
-stage("Stage3"){ 
+stage("Restart web server"){ 
+    sh "ssh centos@jenkins_worker1.cyber-pro.org  sudo systemctl restart httpd"
 
 echo "hello" 
 
