@@ -11,7 +11,7 @@ node {
 	}
 	stage("Install Prerequisites"){
 		sh """
-		ssh centos@dev1.acirrustech.com                 sudo yum install httpd -y
+		ssh centos@dev1.cyber-pro.org                  sudo yum install httpd -y
 		"""
 	}
 	stage("Copy artifacts"){
