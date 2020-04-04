@@ -12,27 +12,28 @@ node('worker1') {
 			'qa1.cyber-pro.org', 
 			'stage1.cyber-pro.org', 
 			'prod1.cyber-pro.org'], 
-			description: 'Please choose an environment', 
+		    description: 'Please choose an environment', 
 			name: 'ENVIR'),
 
-			choice(choices:  
-            [
-			 'v0.1', 
-			 'v0.2', 
-			 'v0.3', 
-			 'v0.4', 
-			 'v0.5'],  
-           description: 'Which version should we deploy?',  
-                  name: 'Version'),
+			// Asks for version
+			choice(choices: [
+				'v0.1', 
+				'v0.2', 
+				'v0.3', 
+				'v0.4', 
+				'v0.5'
+				], 
+			description: 'Which version should we deploy?', 
+			name: 'Version'),
 
-				  string(defaultValue: 'v1',
-				   description: 'Please enter version number', 
-				   name: 'APP_VERSION', 
-				   trim: true)
-				])  
 
+			// Asks for an input
+			string(defaultValue: 'v1', 
+			description: 'Please enter version number', 
+			name: 'APP_VERSION', 
+			trim: true)
+			])
 		])
-
 		// Pulls a repo from developer
 	stage("Pull Repo"){
 		git   'https://github.com/farrukh90/cool_website.git'
