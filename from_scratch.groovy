@@ -13,7 +13,7 @@ node('worker1') {
 			'stage1.cyber-pro.org', 
 			'prod1.cyber-pro.org'], 
 			description: 'Please choose an environment', 
-			name: 'ENVIR')]),
+			name: 'ENVIR'),
 
 			choice(choices:  
             [
@@ -24,6 +24,7 @@ node('worker1') {
 			 'v0.5'],  
            description: 'Which version should we deploy?',  
                   name: 'Version')
+				])  
 
 		])
 
