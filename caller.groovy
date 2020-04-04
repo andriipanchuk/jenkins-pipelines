@@ -16,7 +16,7 @@ echo "hello"
 } 
 
 stage("Stage4"){ 
-build 'Template' 
+build 'Template job' 
 
 } 
 
