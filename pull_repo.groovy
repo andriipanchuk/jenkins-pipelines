@@ -2,7 +2,7 @@ node {
 
 stage("Stage1"){ 
 echo "hello" 
-
+git 'https://github.com/farrukh90/packer.git'
 } 
 stage("Stage2"){ 
 echo "hello" 
