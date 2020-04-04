@@ -54,7 +54,7 @@ node('worker1') {
 		ssh centos@${ENVIR}				    sudo chmod 777 /var/www/html/*
 		"""
 	}
-		//Restarts web server
+	//Restarts web server
 	stage("Restart web server"){
 		ws("tmp/") {
 			sh "ssh centos@${ENVIR}               sudo systemctl restart httpd"
@@ -66,5 +66,5 @@ node('worker1') {
 		ws("mnt/"){
 			slackSend color: '#BADA55', message: 'Hello, World!'
 		}
-	 }
+	}
 }
