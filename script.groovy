@@ -30,7 +30,7 @@ sh label: '', script:
 
 '''#!/bin/bash 
 
-if [ ! -d /tmp/foo.txt ];  
+if [ ! -f /tmp/foo.txt ];  
 
 then 
 
@@ -38,8 +38,7 @@ echo "File not found!"
 
 echo "Creating a folder" 
 
-mkdir "/tmp/foo.txt"
-ls -l /tmp 
+mkdir "/tmp/foo.txt" 
 
  
 
