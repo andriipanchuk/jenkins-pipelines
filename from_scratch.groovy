@@ -6,13 +6,25 @@ node('worker1') {
 
 		// Below line triggers this job every minute
 		pipelineTriggers([pollSCM('* * * * *')]),
-		parameters([choice(choices: [
+		parameters([
+			choice(choices: [
 			'dev1.cyber-pro.org', 
 			'qa1.cyber-pro.org', 
 			'stage1.cyber-pro.org', 
 			'prod1.cyber-pro.org'], 
 			description: 'Please choose an environment', 
-			name: 'ENVIR')]), 
+			name: 'ENVIR')]),
+
+			choice(choices:  
+            [
+			 'v0.1', 
+			 'v0.2', 
+			 'v0.3', 
+			 'v0.4', 
+			 'v0.5'],  
+           description: 'Which version should we deploy?',  
+                  name: 'Version')
+
 		])
 
 		// Pulls a repo from developer
