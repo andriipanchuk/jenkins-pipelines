@@ -23,7 +23,12 @@ node('worker1') {
 			 'v0.4', 
 			 'v0.5'],  
            description: 'Which version should we deploy?',  
-                  name: 'Version')
+                  name: 'Version'),
+
+				  string(defaultValue: 'v1',
+				   description: 'Please enter version number', 
+				   name: 'APP_VERSION', 
+				   trim: true)
 				])  
 
 		])
