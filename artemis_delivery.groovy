@@ -86,4 +86,38 @@ docker tag artemis:${Version} 100814933129.dkr.ecr.us-east-1.amazonaws.com/artem
 
 } 
 
-}
+stage("Push Image"){ 
+
+timestamps { 
+
+ws { 
+
+sh ''' 
+
+docker push 100814933129.dkr.ecr.us-east-1.amazonaws.com/artemis:${Version} 
+
+''' 
+
+} 
+
+} 
+
+} 
+
+stage("Send slack notifications"){ 
+
+timestamps { 
+
+ws { 
+
+echo "Slack" 
+
+//slackSend color: '#BADA55', message: 'Hello, World!' 
+
+} 
+
+} 
+
+} 
+
+} 
