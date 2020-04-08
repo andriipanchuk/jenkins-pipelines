@@ -71,4 +71,19 @@ docker build -t artemis:${Version} .
 
 }
 
+stage("Tag Image"){ 
+timestamps { 
+ws { 
+sh ''' 
+
+docker tag artemis:${Version} 100814933129.dkr.ecr.us-east-1.amazonaws.com/artemis:${Version} 
+
+''' 
+
+} 
+
+} 
+
+} 
+
 }
