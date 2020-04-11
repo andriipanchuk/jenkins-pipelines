@@ -84,10 +84,10 @@ name: 'ENVIR')])])
 					try {
 						sh '''
 							#!/bin/bash
-							IMAGES=$(ssh centos@dev1.${ENVIR} docker ps -aq) 
+							IMAGES=$(ssh centos@${ENVIR} docker ps -aq) 
 							for i in \$IMAGES; do
-								ssh centos@dev1.${ENVIR} docker stop \$i
-								ssh centos@dev1.${ENVIR} docker rm \$i
+								ssh centos@{ENVIR} docker stop \$i
+								ssh centos@${ENVIR} docker rm \$i
 							done 
 							'''
 					} catch(e) {
@@ -102,7 +102,7 @@ name: 'ENVIR')])])
 		timestamps {
 			ws {
 				sh '''
-					ssh centos@.${ENVIR} docker run -dti -p 5001:5000 100814933129.dkr.ecr.us-east-1.amazonaws.com/artemis:${Version}
+					ssh centos@${ENVIR} docker run -dti -p 5001:5000 100814933129.dkr.ecr.us-east-1.amazonaws.com/artemis:${Version}
 					'''
 				}
 			}
