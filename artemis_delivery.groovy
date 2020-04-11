@@ -77,15 +77,7 @@ node {
                         }
                 }
         }
-                stage("Authenticate"){
-                        timestamps {
-                                ws {
-                                        sh '''
-                                                ssh centos@dev1.cyber-pro.org $(aws ecr get-login --no-include-email --region us-east-1)
-                                                '''
-                        }
-                }
-        }
+               
                 stage("Clean Up"){
                         timestamps {
                                 ws {
