@@ -15,10 +15,10 @@ properties(
 
              [ 
 
-            'dev1.acirrustech.com', 
-			'qa1.acirrustech.com', 
-			'stage1.acirrustech.com', 
-			'prod1.acirrustech.com'],  
+                        'dev1.cyber-pro.org', 
+			'qa1.cyber-pro.org', 
+			'stage1.cyber-pro.org', 
+			'prod1.cyber-pro.org'],  
 
 description: 'Please provide an environment to build the application',  
 
@@ -33,7 +33,7 @@ name: 'ENVIR')])])
                         timestamps {
                                 ws{
                                         sh '''
-                                                aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 713287746880.dkr.ecr.us-east-1.amazonaws.com/artemis
+                                                aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 100814933129.dkr.ecr.us-east-1.amazonaws.com/artemis
                                                 '''
                                 }
                         }
@@ -51,7 +51,7 @@ name: 'ENVIR')])])
                         timestamps {
                                 ws {
                                         sh '''
-                                                docker tag artemis:${Version} 713287746880.dkr.ecr.us-east-1.amazonaws.com/artemis:${Version}
+                                               docker tag artemis:${Version} 100814933129.dkr.ecr.us-east-1.amazonaws.com/artemis:${Version} 
                                                 '''
                                 }
                         }
@@ -60,7 +60,7 @@ name: 'ENVIR')])])
                         timestamps {
                                 ws {
                                         sh '''
-                                                docker push 713287746880.dkr.ecr.us-east-1.amazonaws.com/artemis:${Version}
+                                                docker push 100814933129.dkr.ecr.us-east-1.amazonaws.com/artemis:${Version} 
                                                 '''
                                 }
                         }
